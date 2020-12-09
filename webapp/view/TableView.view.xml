@@ -1,0 +1,55 @@
+<mvc:View controllerName="home.kpmg.exercise3.controller.TableView" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>Table View}">
+					<content>
+						<Table id="idProductsTable" inset="false" items="{ path: 'productsModel>/ProductCollection' }" mode="MultiSelect"
+							includeItemInSelection="true">
+							<headerToolbar>
+								<Toolbar>
+									<Title text="Search Products"/>
+									<ToolbarSpacer/>
+									<SearchField width="50%" search=".onFilterTable"/>
+								</Toolbar>
+							</headerToolbar>
+							<infoToolbar>
+								<Toolbar>
+									<Label text="Wide range of available products"/>
+								</Toolbar>
+							</infoToolbar>
+							<columns>
+								<Column width="12em">
+									<Text text="Product"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Supplier"/>
+								</Column>
+								<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+									<Text text="Dimensions"/>
+								</Column>
+								<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+									<Text text="Weight"/>
+								</Column>
+								<Column hAlign="End">
+									<Text text="Price"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier title="{productsModel>Name}" text="{productsModel>ProductId}" />
+										<Text text="{productsModel>SupplierName}"/>
+										<Text text="{productsModel>Width} x {productsModel>Depth} x {productsModel>Height} {productsModel>DimUnit}"/>
+										<Text text="{ parts: [ 'productsModel>WeightMeasure', 'productsModel>WeightUnit'], formatter: '.Formatter.weightState' }"/>
+										<Text text="{productsModel>Price} {productsModel>CurrencyCode}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
